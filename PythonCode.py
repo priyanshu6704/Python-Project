@@ -1,4 +1,4 @@
-# 📦 Import Libraries
+#  Import Libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,9 +7,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
-# ---------------------------------------
-# 📥 Step 1: Load and Clean Dataset
-# ---------------------------------------
+#  Step 1: Load and Clean Dataset
+
 df = pd.read_csv("athlete_events-1.csv")
 
 # Replace missing 'Medal' values with 'No Medal'
@@ -35,9 +34,7 @@ winners_df = df[df['Medal'] != 'No Medal']
 sns.set(style="whitegrid")
 plt.rcParams["figure.figsize"] = (10, 5)
 
-# ---------------------------------------
-# 📊 Step 2: EDA Visualizations
-# ---------------------------------------
+# Step 2: EDA Visualizations
 
 # 1. Medal Distribution (All Athletes)
 plt.figure()
@@ -91,9 +88,7 @@ plt.xlabel("Number of Medals")
 plt.ylabel("Country")
 plt.show()
 
-# ---------------------------------------
-# 🔥 Step 3: Correlation Heatmap
-# ---------------------------------------
+# Step 3: Correlation Heatmap
 
 # Select numerical columns
 corr_df = df[['Age', 'Height', 'Weight', 'MedalValue']]
@@ -104,9 +99,7 @@ sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', linewidths=0.5, square=Tru
 plt.title('Correlation Heatmap')
 plt.show()
 
-# ---------------------------------------
-# 📈 Step 4: Simple Linear Regression (Age ➝ MedalValue)
-# ---------------------------------------
+#Step 4: Simple Linear Regression (Age ➝ MedalValue)
 
 # Features and target
 X = df[['Age']]
@@ -126,9 +119,9 @@ y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 
 # Output results
-print(f"\n📉 Mean Squared Error (MSE): {mse:.4f}")
-print(f"🧮 Coefficient: {model.coef_[0]:.4f}")
-print(f"📐 Intercept: {model.intercept_:.4f}")
+print(f"\n Mean Squared Error (MSE): {mse:.4f}")
+print(f"Coefficient: {model.coef_[0]:.4f}")
+print(f"Intercept: {model.intercept_:.4f}")
 
 # Plot regression
 plt.figure(figsize=(8, 5))
@@ -139,3 +132,4 @@ plt.xlabel('Age')
 plt.ylabel('MedalValue')
 plt.legend()
 plt.show()
+
